@@ -6,13 +6,14 @@ class Note {
         this.element = this.createNoteElement();
         this.setPosition();
         this.addDraggable();
+        this.addUpdateListener();  // Add the listener for contentEditable changes
     }
 
     createNoteElement() {
         const noteContainer = document.createElement("div");
         noteContainer.classList.add("note-container", "draggable");
 
-        const titleElement = document.createElement("h3"); 
+        const titleElement = document.createElement("h3");
         titleElement.textContent = this.title;
 
         const hrElement = document.createElement("hr");
@@ -20,6 +21,7 @@ class Note {
         const descriptionElement = document.createElement("p");
         descriptionElement.textContent = this.description;
         descriptionElement.contentEditable = "true";
+        descriptionElement.classList.add("description");  // Add a class for easy reference
 
         const delElement = document.createElement("button");
         delElement.textContent = "X";
@@ -32,12 +34,12 @@ class Note {
         noteContainer.appendChild(delElement);
 
         // Set a random background color
-        const noteBgColors = ["#D1E9F6", "#EECAD5", "#F6EACB", "#F6EACB", "#AAB396","#6482AD","#C4DAD2", "#91DDCF", "#ECB176"];
+        const noteBgColors = ["#D1E9F6", "#EECAD5", "#F6EACB", "#F6EACB", "#AAB396", "#6482AD", "#C4DAD2", "#91DDCF", "#ECB176"];
         const randomColor = noteBgColors[Math.floor(Math.random() * noteBgColors.length)];
         noteContainer.style.backgroundColor = randomColor;
-        noteContainer.style.padding = "10px";  
-        noteContainer.style.borderRadius = "10px"; 
-        noteContainer.style.position = "absolute"; // Make the note position absolute
+        noteContainer.style.padding = "10px";
+        noteContainer.style.borderRadius = "10px";
+        noteContainer.style.position = "absolute";
         noteContainer.style.width = "300px";
         noteContainer.style.zIndex = "1000";
 
@@ -54,41 +56,56 @@ class Note {
         this.element.style.top = `${randomY}px`;
         this.element.style.position = "absolute";
     }
+
     addDraggable() {
-        // Use interact.js to make the element draggable
         interact(this.element).draggable({
-            // Enable inertial throwing
             inertia: true,
-            // Keep the element within the area of its parent
             modifiers: [
                 interact.modifiers.restrictRect({
                     restriction: 'parent',
                     endOnly: true
                 })
             ],
-            // Enable autoScroll
             autoScroll: true,
 
-            // Call this function on every dragmove event
             onmove: event => {
                 const target = event.target;
-                // Keep the dragged position in the data attributes
                 const x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx;
                 const y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
 
-                // Translate the element
                 target.style.transform = `translate(${x}px, ${y}px)`;
-
-                // Update the position attributes
                 target.setAttribute('data-x', x);
                 target.setAttribute('data-y', y);
             }
         });
     }
 
+    //method to add the update listener for the description field
+    addUpdateListener() {
+        const descriptionElement = this.element.querySelector(".description");
+        descriptionElement.addEventListener("input", () => {
+            this.updateDescription(descriptionElement.textContent);
+        });
+    }
+
+    // Update the note's description and save it to localStorage
+    updateDescription(newDescription) {
+        this.description = newDescription;
+
+        // Update the note in localStorage
+        let notes = JSON.parse(localStorage.getItem('notes')) || [];
+        const noteIndex = notes.findIndex(note => note.id === this.id);
+
+        if (noteIndex !== -1) {
+            notes[noteIndex].description = newDescription;
+            localStorage.setItem('notes', JSON.stringify(notes));
+        }
+    }
+
     removeNote() {
         this.element.remove();
-        // Remove from localStorage
+
+        // Remove the note from localStorage
         let notes = JSON.parse(localStorage.getItem('notes')) || [];
         notes = notes.filter(note => note.id !== this.id);
         localStorage.setItem('notes', JSON.stringify(notes));
@@ -122,9 +139,7 @@ addNoteBtn.addEventListener("click", () => {
     } else {
         alert("Please enter note title and description.");
     }
-    
 });
-
 
 // Load notes from localStorage on page load
 window.onload = () => {
