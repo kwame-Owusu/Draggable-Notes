@@ -19,6 +19,7 @@ class Note {
 
         const descriptionElement = document.createElement("p");
         descriptionElement.textContent = this.description;
+        descriptionElement.contentEditable = "true";
 
         const delElement = document.createElement("button");
         delElement.textContent = "X";
