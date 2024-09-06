@@ -7,7 +7,7 @@ This is a note-taking application built using JavaScript and the interact.js lib
 -interact.js: For enabling drag-and-drop functionality.
 -Local Storage: For persisting notes across sessions.
 
-#How to Use
+## How to Use
 1.Add a Note: Enter a title and description in the input fields and click the "Add Note" button. The note will appear on the screen.
 2.Drag a Note: Click and drag any note to move it around the screen.
 3.Delete a Note: Click the "X" button on any note to remove it from the screen and from local storage.
