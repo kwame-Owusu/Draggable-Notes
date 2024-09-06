@@ -1,0 +1,108 @@
+*,
+*::before,
+ *::after{
+    box-sizing: border-box;
+}
+
+
+body {
+    background-color: #E9EFEC;
+    margin: 0;
+    font-family: Arial, sans-serif;
+ }
+
+html, body {
+    height: 100%;
+}
+
+.main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+
+.container {
+    display: flex;
+    flex-direction: column; /* Stack the input and button vertically */
+    justify-content: center;
+    align-items: center;
+    gap: 10px; 
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#note-title{
+    outline: none;
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    width: 100%;
+    font-size: 0.95rem;
+
+}
+#note-description{
+    outline: none;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    font-size: 0.95rem;
+}
+#note-description{
+    resize: vertical;
+    height: 100px;
+}
+.notes-container {
+    color: #333;
+    position: relative; /* Establishes a reference for absolute positioning of notes */
+    width: 100%; /* Full width of the parent container */
+    height: 100vh; 
+    overflow-x: hidden;
+}
+
+.note-container hr {
+    border: none;
+    border-top: 1px solid #333; 
+    margin: 10px 0; /* Add vertical spacing around the <hr> */
+}
+.notes-container h3{
+    margin: 0;
+}
+.delete-btn{
+    cursor: pointer;
+    font-family: "Open Sans", sans-serif;
+    background-color: white;
+    width: 50px;
+    padding: 5px;
+    border: 1.8px solid black;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: background-color ease-in-out 0.3s, color ease-in-out 0.3s, transform ease-in-out 0.3s;
+}
+.delete-btn:hover{
+    background-color:  #EF5A6F;
+    color: white;
+    transform: translateY(-1px);
+}
+#add-note-btn{
+    cursor: pointer;
+    font-family: "Open Sans", sans-serif;
+    background-color: white;
+    width: 200px;
+    padding: 10px;
+    border: 1.8px solid #333;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background-color ease-in-out 0.3s, color ease-in-out 0.3s, transform ease-in-out 0.3s;
+}
+
+#add-note-btn:hover{
+    background-color:  #333;
+    color: white;
+    transform: translateY(-1px);
+}
