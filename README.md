@@ -20,6 +20,6 @@ This is a note-taking application built using JavaScript and the interact.js lib
 ```bash
 git clone https://github.com/kwame-Owusu/Draggable-Notes/edit/main/README.md
 ```
-#Video Demo
+## Video Demo
 https://github.com/user-attachments/assets/15169d6b-3f64-4617-8649-7ce6631c9dc9
 
