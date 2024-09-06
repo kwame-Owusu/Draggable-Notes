@@ -1,2 +1,3 @@
-# Draggable Notes
-This is a project created to practice with OOP in Javascript, I used InteractJS for the dragging feature other elements are all vanilla JS, HTML and CSS
+# Note-Taking Application
+##Overview
+This is a note-taking application built using JavaScript and the interact.js library. It allows users to create, drag, and delete notes. The notes are stored in local storage, ensuring that they persist across page reloads.
