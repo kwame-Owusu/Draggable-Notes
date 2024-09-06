@@ -57,6 +57,10 @@ html, body {
     resize: vertical;
     height: 100px;
 }
+
+.description{ /* when clicking to edit, outline is annoying*/
+    outline: none;
+}
 .notes-container {
     color: #333;
     position: relative; /* Establishes a reference for absolute positioning of notes */
