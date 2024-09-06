@@ -10,6 +10,7 @@ This is a note-taking application built using JavaScript and the interact.js lib
 
 ## Initial Design
 before getting to coding the project I made a simple design in excalidraw, so I could understand the vision better.
+
 ![draggable-notes](https://github.com/user-attachments/assets/879d89a2-d1ee-447e-a806-e4452133f7a6)
 
 
