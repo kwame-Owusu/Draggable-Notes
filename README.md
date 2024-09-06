@@ -8,6 +8,11 @@ This is a note-taking application built using JavaScript and the interact.js lib
 - **interact.js**: For enabling drag-and-drop functionality.
 - **Local Storage**: For persisting notes across sessions.
 
+## Initial Design
+before getting to coding the project I made a simple design in excalidraw, so I could understand the vision better.
+![draggable-notes](https://github.com/user-attachments/assets/879d89a2-d1ee-447e-a806-e4452133f7a6)
+
+
 ## How to Use
 
 1. **Add a Note**: Enter a title and description in the input fields and click the "Add Note" button. The note will appear on the screen.
